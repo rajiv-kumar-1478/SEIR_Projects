@@ -8,7 +8,7 @@ def crawl(url):
         'User-Agent': 'Mozilla/5.0',
     }
     try:
-        response = re.get(url,timeout=5,headers=header)
+        response = re.get(url,timeout=(5,20),headers=header)
         if response.status_code==200:
             return response.text
         else:
@@ -54,4 +54,5 @@ if __name__=="__main__":
     html=crawl(url)
     if html:
         parse(html,url)
+
 
