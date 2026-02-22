@@ -60,7 +60,7 @@ def getSimHash(freqDict):
     return simhash
 
 
-def commonBit(simhash1,simhash2):
+def commonBits(simhash1,simhash2):
     x=simhash1^simhash2
     distance=0
     for i in range(64):
@@ -81,8 +81,9 @@ if __name__=="__main__":
         freqDict2=countWordFreq(response2)
         simhash1=getSimHash(freqDict1)
         simhash2=getSimHash(freqDict2)
-        common_bits=commonBit(simhash1,simhash2)
+        common_bits=commonBits(simhash1,simhash2)
         print(f"Common bits: {common_bits}")
     else:
 
         print("Failed to fetch data")
+
