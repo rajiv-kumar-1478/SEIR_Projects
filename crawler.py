@@ -1,3 +1,4 @@
+import sys
 import requests as re
 import bs4 as bs
 
@@ -16,7 +17,7 @@ def crawl(url):
         print(e)
         return None 
     
-def parse(html):
+def parse(html,url):
     soup=bs.BeautifulSoup(html,'html.parser') 
     
     title=soup.find('title')
@@ -44,9 +45,13 @@ def parse(html):
     print(" ".join(links))
     
         
+if __name__=="__main__":
+    if (len(sys.argv))<2:
+        print("Usage python crawler.py <url>")
+        sys.exit(1)
+        
+    url=sys.argv[1]
+    html=crawl(url)
+    if html:
+        parse(html,url)
 
-url=input('Enter URL: ')
-# url="https://sitare.org"
-html=crawl(url)
-if html:
-    parse(html)
