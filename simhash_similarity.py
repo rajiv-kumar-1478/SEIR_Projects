@@ -37,11 +37,9 @@ def countWordFreq(response):
 def polynomialrollingHash(word,p=53,m=2**64):
     hash_value=0
     #hash_value += ASCII * current_power
-    curren_power=0
     power_value=1
     for char in word:
         hash_value+=ord(char)*(power_value)
-        curren_power+=1
         power_value*=p
     return hash_value&((1<<64)-1)
 
@@ -87,5 +85,6 @@ if __name__=="__main__":
     else:
 
         print("Failed to fetch data")
+
 
 
