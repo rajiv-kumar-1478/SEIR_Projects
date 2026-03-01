@@ -1,7 +1,7 @@
 import sys
 import requests as re
 import bs4 as bs
-
+from urllib.parse import urljoin
 
 def crawl(url):
     header={
@@ -36,11 +36,9 @@ def parse(html,url):
     
     for anchor in anchors:
         href=anchor.get('href')
-        if href and (href.startswith('http') or href.startswith('https')):
-            print(href)
-        if href and href.startswith('/'):
-            href=url+href
-            print(href)
+        if href:
+            full_url = urljoin(url, href)
+            print(full_url)
     
         
 if __name__=="__main__":
@@ -55,6 +53,7 @@ if __name__=="__main__":
     html=crawl(url)
     if html:
         parse(html,url)
+
 
 
 
